@@ -22,7 +22,7 @@ function tooltip:OnDisable()
 end
 
 function tooltip:OnClick(frame, button)
-	if button == 'RightButton' then
+	if button == 'LeftButton' then
 		self:Show(frame)
 	end
 end

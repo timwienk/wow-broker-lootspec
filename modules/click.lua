@@ -17,7 +17,7 @@ function click:OnDisable()
 end
 
 function click:OnClick(frame, button)
-	if button == 'LeftButton' then
+	if button == 'RightButton' then
 		if not EncounterJournal then
 			LoadAddOn('Blizzard_EncounterJournal')
 		end
