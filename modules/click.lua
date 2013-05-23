@@ -2,7 +2,7 @@ local name, addon = ...
 local click = addon:NewModule('Click')
 
 -- Localise global variables
-local IsAddOnLoaded, LoadAddOn, ShowUIPanel, HideUIPanel = IsAddOnLoaded, LoadAddOn, ShowUIPanel, HideUIPanel
+local LoadAddOn, ShowUIPanel, HideUIPanel = LoadAddOn, ShowUIPanel, HideUIPanel
 local EJ_GetCurrentInstance, EJ_GetDifficulty = EJ_GetCurrentInstance, EJ_GetDifficulty
 local UnitClass, GetInstanceInfo = UnitClass, GetInstanceInfo
 
@@ -17,20 +17,7 @@ function click:OnDisable()
 end
 
 function click:OnClick(frame, button)
-	if button == 'LeftButton' and IsAddOnLoaded('AtlasLoot') then
-		local frame = AtlasLootDefaultFrame
-		if not frame then
-			frame = AtlasFrame
-		end
-
-		if frame then
-			if frame:IsShown() then
-				frame:Hide()
-			else
-				frame:Show()
-			end
-		end
-	else
+	if button == 'LeftButton' then
 		if not EncounterJournal then
 			LoadAddOn('Blizzard_EncounterJournal')
 		end

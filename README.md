@@ -13,13 +13,13 @@ Features
 - Adds an asterisk (\*) when loot specialisation is in the default
   "current specialisation" mode
 - Tooltip to change the loot specialisation
-- Left click to toggle the [Dungeon Journal][] or [Atlas Loot][] if
-  available
-- Right click always toggles the [Dungeon Journal][]
+- Left click to toggle the [Dungeon Journal][]
 - When clicked and the [Dungeon Journal][] is opened, filters are set
   for the selected loot specialisation and dungeon you are in
 - When switching loot specialisation while the [Dungeon Journal][] is
   open, filters and dungeon are set as well
+- Right click toggles tooltip for loot specialisation changing as well,
+  for those who have mouseover tooltips disabled in combat
 
 Notes
 -----
@@ -35,5 +35,4 @@ lot to translate.
 
 [help localise]: http://www.wowace.com/addons/broker_lootspec/localization/
 [Display Addon]: https://github.com/tekkub/libdatabroker-1-1/wiki/addons-using-ldb
-[Atlas Loot]: http://www.curse.com/addons/wow/atlasloot-enhanced
 [Dungeon Journal]: http://www.wowpedia.org/Dungeon_Journal

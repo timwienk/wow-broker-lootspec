@@ -8,7 +8,7 @@
 ## Title: Broker_LootSpec
 ## Notes: Simple loot specialisation display with selection in tooltip.
 ## Author: Timmeh
-## OptionalDeps: LibStub, Ace3, LibPubSub-1.0, LibQTip-1.0, AtlasLoot
+## OptionalDeps: LibStub, Ace3, LibPubSub-1.0, LibQTip-1.0
 
 embeds.xml
 locale.xml

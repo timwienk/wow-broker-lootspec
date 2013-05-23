@@ -10,13 +10,21 @@ local LibQTip = LibStub('LibQTip-1.0')
 
 function tooltip:OnEnable()
 	addon:Subscribe('MOUSE_ENTER', self, 'Show')
+	addon:Subscribe('MOUSE_CLICK', self, 'OnClick')
 	addon:Subscribe('LOOT_SPEC_UPDATED', self, 'OnLootSpecUpdated')
 end
 
 function tooltip:OnDisable()
 	self:Hide()
 	addon:Unsubscribe('MOUSE_ENTER', self, 'Show')
+	addon:Unsubscribe('MOUSE_CLICK', self, 'OnClick')
 	addon:Unsubscribe('LOOT_SPEC_UPDATED', self, 'OnLootSpecUpdated')
+end
+
+function tooltip:OnClick(frame, button)
+	if button == 'RightButton' then
+		self:Show(frame)
+	end
 end
 
 function tooltip:OnLootSpecUpdated()
