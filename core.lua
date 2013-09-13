@@ -8,6 +8,7 @@ local GetSpecialization = GetSpecialization
 
 function addon:OnInitialize()
 	self.L = LibStub('AceLocale-3.0'):GetLocale(name)
+	self:RegisterEvent('PLAYER_ENTERING_WORLD', 'TriggerLootSpecUpdated')
 	self:RegisterEvent('PLAYER_LOOT_SPEC_UPDATED', 'TriggerLootSpecUpdated')
 	self:RegisterEvent('PLAYER_SPECIALIZATION_CHANGED', 'TriggerLootSpecUpdated')
 end
