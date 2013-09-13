@@ -35,7 +35,7 @@ function tooltip:Show(anchor)
 	self:Hide()
 
 	if self.enabledState then
-		self.tip = LibQTip:Acquire(name .. 'Tooltip', 2, 'LEFT', 'LEFT')
+		self.tip = LibQTip:Acquire(name .. 'Tooltip', 3, 'LEFT', 'LEFT')
 		self.tip:Clear()
 
 		self:Populate()
@@ -55,17 +55,17 @@ end
 
 function tooltip:Populate()
 	local lootspec = addon.GetLootSpecialization()
-	local id, name = GetSpecializationInfo(GetSpecialization())
+	local id, name, _, icon = GetSpecializationInfo(GetSpecialization())
 
-	self:AddLine(0, format(LOOT_SPECIALIZATION_DEFAULT, name), lootspec == 0)
+	self:AddLine(0, icon, format(LOOT_SPECIALIZATION_DEFAULT, name), lootspec == 0)
 
 	for i = 1, GetNumSpecializations() do
-		id, name = GetSpecializationInfo(i)
-		self:AddLine(id, name, lootspec == id)
+		id, name, _, icon = GetSpecializationInfo(i)
+		self:AddLine(id, icon, name, lootspec == id)
 	end
 end
 
-function tooltip:AddLine(id, name, active)
+function tooltip:AddLine(id, icon, name, active)
 	local line = self.tip:AddLine()
 	local radio = '|T:0|t'
 
@@ -74,9 +74,9 @@ function tooltip:AddLine(id, name, active)
 	end
 
 	self.tip:SetCell(line, 1, radio)
-	self.tip:SetCell(line, 2, name)
+	self.tip:SetCell(line, 2, '|T' .. icon .. ':14|t')
+	self.tip:SetCell(line, 3, name)
 	self.tip:SetLineScript(line, 'OnMouseUp', self:GetLineScript(id))
-
 	return line
 end
 
