@@ -5,7 +5,7 @@
 ## X-License: MIT License
 ## X-Category: Boss Encounters, Loot, Gear, Data-Broker
 
-## Title: Broker_LootSpec
+## Title: Broker: LootSpec
 ## Notes: Simple loot specialisation display with selection in tooltip.
 ## Author: Timmeh
 ## OptionalDeps: LibStub, Ace3, LibPubSub-1.0, LibQTip-1.0

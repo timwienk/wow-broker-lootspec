@@ -1,10 +1,16 @@
-Broker\_LootSpec
+Broker: LootSpec
 ================
 
 Simple loot specialisation display with specialisation selection in its
 tooltip.
 
 **Requires a LibDataBroker [Display Addon][].**
+
+Also known as:
+
+- Broker\_LootSpec
+- Broker: Loot Specialisation
+- Broker: Loot Specialization
 
 Features
 --------
@@ -23,6 +29,7 @@ Features
 
 Notes
 -----
+
 - There is no configuration (since there is nothing to configure)
 - Looks (icon display, font and the like) depend on the
   [Display Addon][] you use
