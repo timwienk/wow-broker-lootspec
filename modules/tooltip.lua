@@ -67,8 +67,13 @@ end
 
 function tooltip:AddLine(id, name, active)
 	local line = self.tip:AddLine()
+	local radio = '|T:0|t'
 
-	self.tip:SetCell(line, 1, active, self:GetIconProvider())
+	if active then
+		radio = '|TInterface\\Buttons\\UI-RadioButton:8:8:0:0:64:16:19:28:3:12|t'
+	end
+
+	self.tip:SetCell(line, 1, radio)
 	self.tip:SetCell(line, 2, name)
 	self.tip:SetLineScript(line, 'OnMouseUp', self:GetLineScript(id))
 
@@ -80,37 +85,4 @@ function tooltip:GetLineScript(id)
 		addon.SetLootSpecialization(id)
 		self:Hide()
 	end
-end
-
-function tooltip:GetIconProvider()
-	if self.iconProvider then
-		return self.iconProvider
-	end
-
-	local provider, prototype = LibQTip:CreateCellProvider()
-
-	function prototype:InitializeCell()
-		self.texture = self:CreateTexture()
-		self.texture:SetAllPoints(self)
-	end
-
-	function prototype:SetupCell(tooltip, value)
-		local texture = self.texture
-
-		texture:SetWidth(8)
-		texture:SetHeight(8)
-
-		if value then
-			texture:SetTexture('Interface\\Buttons\\UI-RadioButton')
-			texture:SetTexCoord(0.31, 0.44, 0.1, 0.9)
-		else
-			texture:SetTexture(0, 0, 0, 0)
-		end
-
-		return texture:GetWidth(), texture:GetHeight()
-	end
-
-	self.iconProvider = provider
-
-	return provider
 end
