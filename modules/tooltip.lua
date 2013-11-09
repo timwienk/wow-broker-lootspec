@@ -40,6 +40,7 @@ function tooltip:Show(anchor)
 
 		self:Populate()
 
+		self.tip.OnRelease = function() self.tip = nil end
 		self.tip:SetAutoHideDelay(0.1, anchor)
 		self.tip:SmartAnchorTo(anchor)
 		self.tip:Show()
@@ -49,7 +50,6 @@ end
 function tooltip:Hide()
 	if self.tip then
 		LibQTip:Release(self.tip)
-		self.tip = nil
 	end
 end
 
