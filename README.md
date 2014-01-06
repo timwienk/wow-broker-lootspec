@@ -4,7 +4,8 @@ Broker: LootSpec
 Simple loot specialisation display with specialisation selection in its
 tooltip.
 
-**Requires a LibDataBroker [Display Addon][].**
+**Requires a LibDataBroker [Display Addon][], like [StatBlockCore][] or
+[ElvUI][].**
 
 Also known as:
 
@@ -42,4 +43,6 @@ lot to translate.
 
 [help localise]: http://www.wowace.com/addons/broker_lootspec/localization/
 [Display Addon]: https://github.com/tekkub/libdatabroker-1-1/wiki/addons-using-ldb
+[StatBlockCore]: http://www.curse.com/addons/wow/stat-block-core
+[ElvUI]: http://www.tukui.org/dl.php
 [Dungeon Journal]: http://www.wowpedia.org/Dungeon_Journal
