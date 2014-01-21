@@ -21,7 +21,11 @@ function broker:OnLootSpecUpdated()
 	local lootspec, id, name, description, icon = addon.GetLootSpecialization()
 
 	if not name then
-		name = 'Unknown'
+		name = 'None'
+	end
+
+	if not icon then
+		icon = 'Interface\\Icons\\INV_Misc_QuestionMark'
 	end
 
 	if lootspec == 0 then

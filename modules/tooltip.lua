@@ -55,7 +55,13 @@ end
 
 function tooltip:Populate()
 	local lootspec = addon.GetLootSpecialization()
-	local id, name, _, icon = GetSpecializationInfo(GetSpecialization())
+	local spec = GetSpecialization()
+	local name, icon = 'None', 'Interface\\Icons\\INV_Misc_QuestionMark'
+	local id, _
+
+	if spec then
+		id, name, _, icon = GetSpecializationInfo(spec)
+	end
 
 	self:AddLine(0, icon, format(LOOT_SPECIALIZATION_DEFAULT, name), lootspec == 0)
 
