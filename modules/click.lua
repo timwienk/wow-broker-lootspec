@@ -61,12 +61,6 @@ function click.PrepareEncounterJournal()
 	if instance > 0 then
 		local _, _, difficulty = GetInstanceInfo()
 
-		if difficulty > 7 then
-			difficulty = 1
-		elseif difficulty > 2 then
-			difficulty = difficulty - 2
-		end
-
 		if instance ~= EncounterJournal.instanceID then
 			EncounterJournal_ListInstances()
 			EncounterJournal_DisplayInstance(instance)
