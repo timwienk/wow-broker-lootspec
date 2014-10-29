@@ -2,9 +2,10 @@ local name, addon = ...
 local tooltip = addon:NewModule('Tooltip')
 
 -- Localise global variables
-local GetSpecialization, GetSpecializationInfo = GetSpecialization, GetSpecializationInfo
-local GetNumSpecializations, LOOT_SPECIALIZATION_DEFAULT = GetNumSpecializations, LOOT_SPECIALIZATION_DEFAULT
-local format = string.format
+local _G = _G
+local GetSpecialization, GetSpecializationInfo = _G.GetSpecialization, _G.GetSpecializationInfo
+local GetNumSpecializations, LOOT_SPECIALIZATION_DEFAULT = _G.GetNumSpecializations, _G.LOOT_SPECIALIZATION_DEFAULT
+local format = _G.string.format
 
 local LibQTip = LibStub('LibQTip-1.0')
 

@@ -2,9 +2,25 @@ local name, addon = ...
 local click = addon:NewModule('Click')
 
 -- Localise global variables
-local LoadAddOn, ShowUIPanel, HideUIPanel = LoadAddOn, ShowUIPanel, HideUIPanel
-local EJ_GetCurrentInstance, EJ_GetDifficulty = EJ_GetCurrentInstance, EJ_GetDifficulty
-local UnitClass, GetInstanceInfo = UnitClass, GetInstanceInfo
+local _G = _G
+local LoadAddOn, ShowUIPanel, HideUIPanel = _G.LoadAddOn, _G.ShowUIPanel, _G.HideUIPanel
+local EJ_GetCurrentInstance, EJ_GetDifficulty = _G.EJ_GetCurrentInstance, _G.EJ_GetDifficulty
+local UnitClass, GetInstanceInfo = _G.UnitClass, _G.GetInstanceInfo
+
+local EncounterJournal, EncounterJournal_SetFilter
+local EncounterJournal_ListInstances, EncounterJournal_DisplayInstance, EncounterJournal_SelectDifficulty
+
+local function LoadEncounterJournal()
+	if not _G.EncounterJournal then
+		LoadAddOn('Blizzard_EncounterJournal')
+	end
+
+	EncounterJournal = _G.EncounterJournal
+	EncounterJournal_SetFilter = _G.EncounterJournal_SetFilter
+	EncounterJournal_ListInstances = _G.EncounterJournal_ListInstances
+	EncounterJournal_DisplayInstance = _G.EncounterJournal_DisplayInstance
+	EncounterJournal_SelectDifficulty = _G.EncounterJournal_SelectDifficulty
+end
 
 function click:OnEnable()
 	addon:Subscribe('MOUSE_CLICK', self, 'OnClick')
@@ -19,24 +35,20 @@ end
 function click:OnClick(frame, button)
 	if button == 'RightButton' then
 		if not EncounterJournal then
-			LoadAddOn('Blizzard_EncounterJournal')
+			LoadEncounterJournal()
 		end
 
-		local journal = EncounterJournal
-
-		if journal:IsShown() then
-			HideUIPanel(journal)
+		if EncounterJournal:IsShown() then
+			HideUIPanel(EncounterJournal)
 		else
 			self.PrepareEncounterJournal()
-			ShowUIPanel(journal)
+			ShowUIPanel(EncounterJournal)
 		end
 	end
 end
 
 function click:OnLootSpecUpdated()
-	local journal = EncounterJournal
-
-	if journal and journal:IsShown() then
+	if EncounterJournal and EncounterJournal:IsShown() then
 		self.PrepareEncounterJournal()
 	end
 end
@@ -45,7 +57,6 @@ function click.PrepareEncounterJournal()
 	local _, _, class = UnitClass('player')
 	local _, spec = addon.GetLootSpecialization()
 	local instance = EJ_GetCurrentInstance()
-	local journal = EncounterJournal
 
 	if instance > 0 then
 		local _, _, difficulty = GetInstanceInfo()
@@ -56,7 +67,7 @@ function click.PrepareEncounterJournal()
 			difficulty = difficulty - 2
 		end
 
-		if instance ~= journal.instanceID then
+		if instance ~= EncounterJournal.instanceID then
 			EncounterJournal_ListInstances()
 			EncounterJournal_DisplayInstance(instance)
 		end
@@ -72,5 +83,5 @@ function click.PrepareEncounterJournal()
 		EncounterJournal_SetFilter(nil, class, 0)
 	end
 
-	journal.encounter.info.lootTab:Click()
+	EncounterJournal.encounter.info.lootTab:Click()
 end

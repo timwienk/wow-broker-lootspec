@@ -2,9 +2,10 @@ local name, addon = ...
 LibStub('AceAddon-3.0'):NewAddon(addon, name, 'AceEvent-3.0', 'LibPubSub-1.0')
 
 -- Localise global variables
-local GetLootSpecialization, SetLootSpecialization = GetLootSpecialization, SetLootSpecialization
-local GetSpecializationInfo, GetSpecializationInfoByID = GetSpecializationInfo, GetSpecializationInfoByID
-local GetSpecialization = GetSpecialization
+local _G = _G
+local GetLootSpecialization, SetLootSpecialization = _G.GetLootSpecialization, _G.SetLootSpecialization
+local GetSpecializationInfo, GetSpecializationInfoByID = _G.GetSpecializationInfo, _G.GetSpecializationInfoByID
+local GetSpecialization = _G.GetSpecialization
 
 function addon:OnInitialize()
 	self.L = LibStub('AceLocale-3.0'):GetLocale(name)
