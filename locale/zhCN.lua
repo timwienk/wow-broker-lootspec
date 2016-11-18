@@ -3,5 +3,4 @@ local L = LibStub('AceLocale-3.0'):NewLocale(name, 'zhCN')
 
 if not L then return end
 
-L["Loot"] = "\230\139\190\229\143\150" -- Needs review
-
+--@localization(locale="zhCN", format="lua_additive_table", handle-unlocalized="english", escape-non-ascii=true, same-key-is-true=true)@
