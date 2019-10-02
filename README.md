@@ -22,10 +22,10 @@ Features
 - Mouse-over tooltip to change the loot specialisation
 - Left click toggles tooltip for loot specialisation changing as well,
   for those who have mouseover tooltips disabled in combat
-- Right click to toggle the [Dungeon Journal][]
-- When clicked and the [Dungeon Journal][] is opened, filters are set
+- Right click to toggle the [Adventure Guide][]
+- When clicked and the [Adventure Guide][] is opened, filters are set
   for the selected loot specialisation and dungeon you are in
-- When switching loot specialisation while the [Dungeon Journal][] is
+- When switching loot specialisation while the [Adventure Guide][] is
   open, filters and dungeon are set as well
 
 Notes
@@ -41,8 +41,8 @@ Localisation
 You can [help localise][] this addon. Fortunately there is really not a
 lot to translate.
 
-[help localise]: http://www.wowace.com/addons/broker_lootspec/localization/
+[help localise]: https://www.wowace.com/projects/broker-lootspec/localization
 [Display Addon]: https://github.com/tekkub/libdatabroker-1-1/wiki/addons-using-ldb
-[StatBlockCore]: http://www.curse.com/addons/wow/stat-block-core
-[ElvUI]: http://www.tukui.org/dl.php
-[Dungeon Journal]: http://www.wowpedia.org/Dungeon_Journal
+[StatBlockCore]: https://www.curseforge.com/wow/addons/stat-block-core
+[ElvUI]: https://www.tukui.org/classic-addons.php?id=2
+[Adventure Guide]: http://wow.gamepedia.org/Adventure_Guide
