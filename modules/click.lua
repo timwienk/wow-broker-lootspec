@@ -4,10 +4,11 @@ local click = addon:NewModule('Click')
 -- Localise global variables
 local _G = _G
 local LoadAddOn, ShowUIPanel, HideUIPanel = _G.LoadAddOn, _G.ShowUIPanel, _G.HideUIPanel
-local EJ_GetCurrentInstance, EJ_GetDifficulty = _G.EJ_GetCurrentInstance, _G.EJ_GetDifficulty
+local EJ_GetInstanceForMap, EJ_GetDifficulty = _G.EJ_GetInstanceForMap, _G.EJ_GetDifficulty
 local UnitClass, GetInstanceInfo = _G.UnitClass, _G.GetInstanceInfo
+local GetBestMapForUnit = _G.C_Map.GetBestMapForUnit
 
-local EncounterJournal, EncounterJournal_SetFilter
+local EncounterJournal, EncounterJournal_SetClassAndSpecFilter
 local EncounterJournal_ListInstances, EncounterJournal_DisplayInstance, EncounterJournal_SelectDifficulty
 
 local function LoadEncounterJournal()
@@ -16,7 +17,7 @@ local function LoadEncounterJournal()
 	end
 
 	EncounterJournal = _G.EncounterJournal
-	EncounterJournal_SetFilter = _G.EncounterJournal_SetFilter
+	EncounterJournal_SetClassAndSpecFilter = _G.EncounterJournal_SetClassAndSpecFilter
 	EncounterJournal_ListInstances = _G.EncounterJournal_ListInstances
 	EncounterJournal_DisplayInstance = _G.EncounterJournal_DisplayInstance
 	EncounterJournal_SelectDifficulty = _G.EncounterJournal_SelectDifficulty
@@ -56,7 +57,7 @@ end
 function click.PrepareEncounterJournal()
 	local _, _, class = UnitClass('player')
 	local _, spec = addon.GetLootSpecialization()
-	local instance = EJ_GetCurrentInstance()
+	local instance = EJ_GetInstanceForMap(GetBestMapForUnit('player'))
 
 	if instance > 0 then
 		local _, _, difficulty = GetInstanceInfo()
@@ -72,9 +73,9 @@ function click.PrepareEncounterJournal()
 	end
 
 	if spec then
-		EncounterJournal_SetFilter(nil, class, spec)
+		EncounterJournal_SetClassAndSpecFilter(nil, class, spec)
 	else
-		EncounterJournal_SetFilter(nil, class, 0)
+		EncounterJournal_SetClassAndSpecFilter(nil, class, 0)
 	end
 
 	EncounterJournal.encounter.info.lootTab:Click()
